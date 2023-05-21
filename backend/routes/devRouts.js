@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const devController = require("../controllers/devController")
+const {protect} = require("../middleware/authMiddleware")
 
-
-router.route("/").get(devController.getDev).post(devController.postDev)
-router.route("/:id").put(devController.putDev).delete(devController.deleteDev)
+router.route("/").get(protect,devController.getDev).post(protect,devController.postDev)
+router.route("/:id").put(protect,devController.putDev).delete(protect,devController.deleteDev)
 
 
 
