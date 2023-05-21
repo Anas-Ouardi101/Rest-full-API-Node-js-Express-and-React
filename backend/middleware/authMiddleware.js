@@ -13,7 +13,7 @@ const protect = asyncHandler(async (req,res,next)=>{
             
             // verify token using jwt.verify() and JWT_SECRET code store at .env and decodeed twoo
             const decoded = jwt.verify(token,process.env.JWT_SECRET)
-
+            
             // Show if the token is expired 
             const curentTime = Math.floor(Date.now() / 1000)
             if(decoded.exp && decoded.exp < curentTime){
